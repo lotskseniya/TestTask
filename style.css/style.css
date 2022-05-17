@@ -12,14 +12,14 @@ html {
 
 body {
   background: #010101;
-  background-image: radial-gradient(circle at 25% -10%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 24%), radial-gradient(circle at 120% 35%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 24%), radial-gradient(circle at -20% 70%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 24%), radial-gradient(circle at 118% 75%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 24%);
+  background-image: radial-gradient(circle at 25% -10%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 24%), radial-gradient(circle at 120% 35%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 24%), radial-gradient(circle at -20% 70%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 24%), radial-gradient(circle at 118% 75%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 24%), radial-gradient(circle at -20% 95%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 22%), radial-gradient(circle at 118% 98%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 22%);
   padding-left: 58.38px;
 }
 
 body .discover_btn {
-  width: 90.07px;
-  height: 35.03px;
-  line-height: 35.03px;
+  width: 11vw;
+  height: 6vh;
+  line-height: 6vh;
   border-radius: 3.34px;
   background-image: linear-gradient(99.99deg, #B936F5 -21.45%, #C64C85 100%, #F1005B 100%);
   -webkit-box-pack: center;
@@ -31,8 +31,8 @@ body .discover_btn {
 
 body .discover_btn a {
   font-weight: 700;
-  font-size: 11px;
-  line-height: 13.39px;
+  font-size: 1.3vw;
+  line-height: 2.6vw;
 }
 
 .gradient_text {
@@ -48,7 +48,9 @@ body .discover_btn a {
 
 .header {
   width: 93%;
-  height: 110px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   padding: 3% 0 3% 7%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -73,7 +75,7 @@ body .discover_btn a {
   display: inline-block;
   float: right;
   margin: 1% 3% 3%;
-  font-size: 18px;
+  font-size: 1.6vw;
   font-weight: 500;
 }
 
@@ -84,13 +86,16 @@ body .discover_btn a {
 .main-section {
   width: 100%;
   background: url("../images/mainsection/Group2.png") no-repeat 85%;
-  height: 80vh;
-  background-size: 32.3%;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  margin-bottom: 5vh;
+  background-size: 29.3%;
 }
 
 .main-section .slogan {
   font-weight: 900;
-  font-size: 4vw;
+  font-size: 3.8vw;
   line-height: 6vw;
   margin-top: 6vw;
   text-transform: uppercase;
@@ -105,8 +110,8 @@ body .discover_btn a {
 
 .main-section .slogan_description {
   margin-top: 24.12px;
-  line-height: 16.94px;
-  font-size: 14px;
+  line-height: 2.8vw;
+  font-size: 1.8vw;
   font-weight: 700;
 }
 
@@ -119,14 +124,13 @@ body .discover_btn a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-top: 24.78px;
+  margin-top: 7vh;
 }
 
 .main-section .learn_more span {
   font-weight: 300;
-  font-size: 10px;
-  line-height: 12.1px;
-  width: 225px;
+  font-size: 1.2vw;
+  line-height: 2vw;
 }
 
 .main-section .vr-users-stat {
@@ -151,41 +155,38 @@ body .discover_btn a {
 }
 
 .main-section .vr-users-stat span {
-  font-size: 10.01px;
+  font-size: 1vw;
   font-weight: 600;
-  line-height: 12.11px;
+  line-height: 1.2vw;
   margin-left: 15px;
 }
 
 .about-section {
-  margin-top: 6%;
-  margin-bottom: 6%;
+  margin-bottom: 40vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  position: relative;
 }
 
 .about-section .about-text-conatainer {
-  max-width: 50%;
+  position: absolute;
   font-weight: 400;
-  font-size: 12px;
-  line-height: 15px;
-  margin-left: 45%;
-  margin-right: 14%;
-  -webkit-margin-before: -31em;
-          margin-block-start: -31em;
-  -webkit-margin-after: 0em;
-          margin-block-end: 0em;
-  width: 40%;
+  font-size: 1.6vw;
+  line-height: 1.7vw;
+  left: 45%;
+  top: 10vw;
+  text-align: justify;
+  width: 47%;
   z-index: 2;
 }
 
 .about-section .about-text-conatainer h3 {
   display: block;
-  font-weight: 900;
-  font-size: 17.1px;
+  font-weight: 700;
+  font-size: 2vw;
   height: 27.36px;
   text-transform: uppercase;
   text-align: right;
@@ -225,23 +226,26 @@ body .discover_btn a {
 
 .about-section .image-about-container .video-container .video {
   position: absolute;
-  top: -2%;
+  top: 20vh;
   left: -17%;
   opacity: .6;
-  width: 103.5%;
+  width: 60vw;
   height: auto;
   border-radius: 80%;
 }
 
 .services_section {
-  margin-left: -44px;
-  width: 100%;
+  width: 96%;
+  padding: 0 2%;
 }
 
 .services_section h2 {
-  margin-left: 51px;
-  font-weight: 900;
-  font-size: 17.1px;
+  -webkit-margin-before: 0em;
+          margin-block-start: 0em;
+  -webkit-margin-after: 0em;
+          margin-block-end: 0em;
+  font-weight: 700;
+  font-size: 2vw;
   line-height: 27.36px;
   text-transform: uppercase;
   text-align: left;
@@ -253,20 +257,20 @@ body .discover_btn a {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin: 0 auto;
-  padding: 1%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 1.5vw;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
+  width: 90%;
+  text-align: center;
 }
 
 .services_section .services_container .service-item {
   position: relative;
-  min-width: 48%;
-  max-width: 90%;
+  min-width: 43%;
+  max-width: 80%;
   color: #fff;
 }
 
@@ -309,6 +313,7 @@ body .discover_btn a {
 
 .services_section .services_container .service-item .discover_btn_background .serv_discover_btn a {
   text-decoration: none;
+  line-height: 2vw;
   color: #fff;
   z-index: 4;
   -webkit-backdrop-filter: none !important;
@@ -316,7 +321,7 @@ body .discover_btn a {
 }
 
 .services_section .services_container .service-item .discover_btn_background .serv_discover_btn a span {
-  font-size: 2vw;
+  font-size: 1.5vw;
 }
 
 .services_section .services_wrap {
@@ -430,6 +435,7 @@ body .discover_btn a {
 
 .reviews-section .reviews-wrap {
   z-index: 1;
+  opacity: .9;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -439,8 +445,8 @@ body .discover_btn a {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   width: 97%;
-  height: 160.51px;
-  margin: 4% 3%;
+  height: 21vw;
+  margin: 4% 3% 20%;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(-42.59%, #AA14F0), color-stop(-42.59%, rgba(0, 0, 0, 0)), color-stop(-42.58%, #AA14F0), color-stop(4.35%, rgba(170, 20, 240, 0.18)), color-stop(99.99%, rgba(151, 60, 68, 0.055)), to(rgba(185, 54, 245, 0)));
   background: linear-gradient(180deg, #AA14F0 -42.59%, rgba(0, 0, 0, 0) -42.59%, #AA14F0 -42.58%, rgba(170, 20, 240, 0.18) 4.35%, rgba(151, 60, 68, 0.055) 99.99%, rgba(185, 54, 245, 0) 100%);
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -459,18 +465,24 @@ body .discover_btn a {
   text-transform: uppercase;
   -webkit-margin-before: 0.83em;
           margin-block-start: 0.83em;
-  -webkit-margin-after: 0em;
-          margin-block-end: 0em;
+  -webkit-margin-after: 1.5vw;
+          margin-block-end: 1.5vw;
 }
 
 .reviews-section .reviews-header .rewiews-p {
   display: block;
   text-align: center;
-  -webkit-margin-before: 1.1em;
-          margin-block-start: 1.1em;
+  -webkit-margin-before: 0.2vh;
+          margin-block-start: 0.2vh;
+  -webkit-margin-after: 0.2vh;
+          margin-block-end: 0.2vh;
+  -webkit-margin-start: 1.15vw;
+          margin-inline-start: 1.15vw;
+  -webkit-margin-end: 1.15vw;
+          margin-inline-end: 1.15vw;
   font-weight: 400;
   font-size: 1.4vw;
-  line-height: 80%;
+  line-height: 2.2vw;
 }
 
 .reviews-section .review {
@@ -482,8 +494,10 @@ body .discover_btn a {
   position: absolute;
   padding: 2%;
   width: 30%;
-  height: 80.74px;
-  top: 16vw;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  top: 12vmax;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(-42.59%, #AA14F0), color-stop(-42.59%, rgba(0, 0, 0, 0)), color-stop(-42.58%, #AA14F0), color-stop(4.35%, rgba(170, 20, 240, 0.18)), color-stop(99.99%, rgba(151, 60, 68, 0.055)), to(rgba(185, 54, 245, 0)));
   background: linear-gradient(180deg, #AA14F0 -42.59%, rgba(0, 0, 0, 0) -42.59%, #AA14F0 -42.58%, rgba(170, 20, 240, 0.18) 4.35%, rgba(151, 60, 68, 0.055) 99.99%, rgba(185, 54, 245, 0) 100%);
   -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -494,7 +508,7 @@ body .discover_btn a {
   text-align: left;
   color: #F7B603;
   font-weight: 700;
-  font-size: 2.5vw;
+  font-size: 2.3vw;
 }
 
 .reviews-section .review .review-text {
@@ -509,12 +523,13 @@ body .discover_btn a {
 
 .reviews-section .review .reviewers .reviewer-photo {
   display: inline-block;
-  margin-top: 2%;
+  margin-top: 3%;
 }
 
 .reviews-section .review .reviewers .reviewer-photo img {
   width: 6vw;
   height: 6vh;
+  vertical-align: text-bottom;
 }
 
 .reviews-section .review .reviewers .reviewer-name {
@@ -533,30 +548,261 @@ body .discover_btn a {
   font-size: 1.2vw;
   line-height: 105%;
   font-weight: 500;
-  margin-top: -4%;
   margin-left: 30%;
 }
 
 .reviews-section .item1 {
-  left: 2%;
+  left: 3%;
 }
 
 .reviews-section .item2 {
-  left: 34%;
+  left: 35%;
 }
 
 .reviews-section .item3 {
-  left: 68%;
+  left: 67%;
 }
 
 .community-section {
-  height: 100vh;
+  height: auto;
   width: 100%;
 }
 
+.community-section .community-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 94%;
+  padding-top: 3.7vh;
+  margin: 2% 2% 4%;
+}
+
+.community-section .community-wrap .community-text {
+  width: 50%;
+}
+
+.community-section .community-wrap .community-text h2 {
+  font-size: 2vw;
+  text-transform: uppercase;
+  margin-top: 2vh;
+}
+
+.community-section .community-wrap .community-text p {
+  font-weight: 400;
+  font-size: 1.5vw;
+  line-height: 2vw;
+  margin-top: 5.5vw;
+  width: 80%;
+}
+
+.community-section .community-wrap .social-medias {
+  width: 50%;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+}
+
+.community-section .community-wrap .social-medias .medias-icon {
+  width: 17vw;
+  height: auto;
+  text-align: center;
+  padding: 4%;
+}
+
+.community-section .community-wrap .social-medias .medias-icon img {
+  vertical-align: middle;
+}
+
+.community-section .community-wrap .social-medias .medias-icon .instagram-icon {
+  width: 6vw;
+}
+
+.community-section .community-wrap .social-medias .medias-icon .discord-icon {
+  width: 5.7vw;
+}
+
+.community-section .community-wrap .social-medias .medias-icon .youtube-icon {
+  width: 4vw;
+}
+
+.community-section .community-wrap .social-medias .medias-icon p {
+  font-size: 1.5vw;
+  text-align: center;
+}
+
+.community-section .community-wrap .social-medias .medias-icon .youtube {
+  -webkit-margin-before: 1.5vw;
+          margin-block-start: 1.5vw;
+}
+
+.proposals-section {
+  width: 96%;
+  padding: 3% 2%;
+  margin-left: -3%;
+}
+
+.proposals-section .proposals-wrap {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background: linear-gradient(55deg, #AA14F0 -42.59%, rgba(0, 0, 0, 0) -42.59%, #AA14F0 -42.58%, rgba(170, 20, 240, 0.18) 4.35%, rgba(151, 60, 68, 0.055) 99.99%, rgba(185, 54, 245, 0) 100%);
+  -webkit-filter: drop-shadow(2px 4px 16px black);
+          filter: drop-shadow(2px 4px 16px black);
+  border-radius: 7.35039px;
+}
+
+.proposals-section .proposals-wrap .form {
+  width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  z-index: 2;
+}
+
+.proposals-section .proposals-wrap .form h2 {
+  padding: 4vw 4vw 1vw;
+  font-weight: 700;
+  font-size: 2.3vw;
+  line-height: 3.4vw;
+}
+
+.proposals-section .proposals-wrap .form p {
+  font-size: 9px;
+  font-size: 1.3vw;
+  padding: 0 4vw;
+}
+
+.proposals-section .proposals-wrap .form .form-container {
+  border-radius: 5px;
+  padding: 5vw;
+  background-image: url(../images/proposalssection/background.svg);
+  border-radius: 0px 7.32242px 7.32242px 0px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position-y: 99%;
+}
+
+.proposals-section .proposals-wrap .form .form-container label {
+  font-size: 1.3vw;
+}
+
+.proposals-section .proposals-wrap .form .form-container input[type=text], .proposals-section .proposals-wrap .form .form-container input[type=email], .proposals-section .proposals-wrap .form .form-container textarea {
+  width: 100%;
+  color: white;
+  background-color: transparent;
+  font-size: 1.3vw;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-top: 1vw;
+  margin-bottom: 3vw;
+  resize: vertical;
+}
+
+.proposals-section .proposals-wrap .form .form-container .custom-select {
+  margin-top: 1vh;
+  position: relative;
+}
+
+.proposals-section .proposals-wrap .form .form-container .custom-select select {
+  display: none;
+}
+
+.proposals-section .proposals-wrap .form .form-container .custom-select .select-selected {
+  background-color: #3a0847;
+}
+
+.proposals-section .proposals-wrap .form .form-container .custom-select .select-selected:after {
+  position: absolute;
+  content: "";
+  top: 1.4vw;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: .6vw solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+.proposals-section .proposals-wrap .form .form-container .custom-select .select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+.proposals-section .proposals-wrap .form .form-container .custom-select .select-items div, .proposals-section .proposals-wrap .form .form-container .custom-select .select-selected {
+  color: #ffffff;
+  padding: 6px 8px;
+  border: 1px solid transparent;
+  font-size: 1.3vw;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+.proposals-section .proposals-wrap .form .form-container .custom-select .select-items div .select-items, .proposals-section .proposals-wrap .form .form-container .custom-select .select-selected .select-items {
+  position: absolute;
+  background-color: DodgerBlue;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.proposals-section .proposals-wrap .form .form-container .custom-select .select-hide {
+  display: none;
+}
+
+.proposals-section .proposals-wrap .form .form-container .custom-select .select-items div:hover, .proposals-section .proposals-wrap .form .form-container .custom-select .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.proposals-section .proposals-wrap .form .form-container input[type=submit] {
+  background-image: linear-gradient(99.99deg, #B936F5 -21.45%, #C64C85 100%, #F1005B 100%);
+  color: #fff;
+  padding: 1vw 3vw;
+  font-size: 1.2vw;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 3vh;
+}
+
 @media only screen and (max-width: 490px) {
+  .about-section {
+    margin-bottom: 3vh;
+  }
+  .about-section .image-about-container {
+    display: none;
+  }
+  .about-section .about-text-conatainer {
+    height: -webkit-max-content;
+    height: -moz-max-content;
+    height: max-content;
+    position: static;
+    width: 64vw;
+  }
   .service-figure .serv-decription br {
     display: none;
+  }
+  .community-section {
+    padding-top: 5vh;
+    margin-left: -6vw;
+  }
+  .proposals-section {
+    margin-left: -7vw;
   }
   .services_section .services_wrap {
     -ms-flex-pack: distribute;
@@ -592,6 +838,9 @@ body .discover_btn a {
     padding: 4px 16px;
     font-size: 12px;
   }
+  .about-section {
+    margin-bottom: -15vh;
+  }
 }
 
 @media (min-width: 701px) and (max-width: 900px) {
@@ -601,6 +850,9 @@ body .discover_btn a {
   .services_container .service-item .service-img {
     width: 90%;
     margin-left: 5%;
+  }
+  .about-section {
+    margin-bottom: 0vh;
   }
 }
 
