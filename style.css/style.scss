@@ -18,13 +18,14 @@ body {
     radial-gradient(circle at -20% 70%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 24%),
     radial-gradient(circle at 118% 75%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 24%),
     radial-gradient(circle at -20% 95%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 22%),
-    radial-gradient(circle at 118% 98%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 22%);
+    radial-gradient(circle at 118% 100%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 22%);
+    background-repeat: no-repeat;
     padding-left: 58.38px;
 
   .discover_btn {
     width: 11vw;
-    height: 6vh;
-    line-height: 6vh;
+    height: 4vw;
+    line-height: 4vw;
     border-radius: 3.34px;
     background-image: linear-gradient(99.99deg, #B936F5 -21.45%, #C64C85 100%, #F1005B 100%);
     -webkit-box-pack: center;
@@ -91,7 +92,7 @@ body {
   width: 100%;
   background: url('../images/mainsection/Group2.png') no-repeat 85%;
   height: max-content;
-  margin-bottom: 5vh;
+  // margin-bottom: 5vh;
   background-size: 29.3%;
    
   .slogan {
@@ -131,18 +132,20 @@ body {
     }
   }
 
-
-
   .vr-users-stat {
-    margin-top: 39.97px;
+    margin-top: 7vw;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     z-index: 2;
 
+    .avatars-of-all-users {
+       width: 11vw;
+    }
+
     #dot {
-      width: 8.34px;
-      height: 8.34px;
+      width: 1vw;
+      height: 1vw;
       border-radius: 50%;
       background-color: #fff;
       margin-left: 20px;
@@ -162,7 +165,7 @@ body {
  
 .about-section {
   // margin-top: 6%;
-  margin-bottom: 40vh;
+  margin-bottom: 22vw;
   display: flex;
   flex-wrap: wrap;
   position: relative;
@@ -183,11 +186,10 @@ body {
     display: block;
     font-weight: 700;
     font-size: 2vw;
-    height: 27.36px;
     text-transform: uppercase;
     text-align: right;
     padding-top: 2%;
-    padding-bottom: 20px;
+    padding-bottom: 4vw;
     margin-block-start: 0em;
     margin-block-end: 0em;
     z-index: 2;
@@ -224,7 +226,7 @@ body {
       // z-index: 3;
 
 
-        height: 78vh;
+        height: 39vw;
         width: 70%;
         margin-left: -21px;
         position: relative;
@@ -236,7 +238,7 @@ body {
       
           .video {
             position: absolute;
-            top: 20vh;
+            top: 15vw;
             left: -17%;
             opacity: .6;
             width: 60vw;
@@ -266,6 +268,7 @@ body {
     // margin-left: 51px;
     margin-block-start: 0em;
     margin-block-end: 0em;
+    padding-bottom: 1vw;
     font-weight: 700;
     font-size: 2vw;
     line-height: 27.36px;
@@ -436,7 +439,7 @@ body {
 // ----------------reviews section--------------------
 
 .reviews-section {
-  margin-left: -44px;
+  margin-left: -4vw;
   width: 100%;
      
   .reviews-wrap {
@@ -799,7 +802,7 @@ footer {
   flex-wrap: wrap;
   left: 0;
   bottom: 0;
-  width: 98%;
+  width: 96%;
   height: auto;
   text-align: center;
   align-items: center;
@@ -819,6 +822,21 @@ footer {
 
 @media only screen and (max-width: 490px) {
   // almost edited****
+  
+  body {
+    padding-left: 10vw;
+  }
+
+  .main-section {
+    margin-bottom: 5vh;
+    .learn_more {
+      .discover_btn {
+        height: 3vw;
+        line-height: 2vw;
+      }
+    }
+  }
+
   .about-section {
     margin-bottom: 3vh;
     .image-about-container {
@@ -827,7 +845,7 @@ footer {
     .about-text-conatainer {
       height: max-content;
       position: static;
-      width: 64vw;
+      width: 73vw;
     }
   }
 
@@ -837,13 +855,17 @@ footer {
     }
   }
 
-  .community-section {
-    padding-top: 5vh;
+  .reviews-section {
     margin-left: -6vw;
   }
 
+  .community-section {
+    padding-top: 5vh;
+   
+  }
+
   .proposals-section {
-    margin-left: -7vw;
+    margin-left: -5vw;
   }
 
   .services_section {
@@ -887,7 +909,7 @@ footer {
        height: 18vh !important;
 
        .figure-img {
-         visibility: hidden; !important;
+         visibility: hidden !important;
        }
     
        .contact_btn {
@@ -902,6 +924,17 @@ footer {
 
 
 @media (min-width:491px) and (max-width: 700px) {
+  
+  .main-section {
+    .learn_more {
+      .discover_btn {
+        height: 3vw;
+        line-height: 2.5vw;
+      }
+    }
+  }
+  
+  
   .services_container {
     .service-item {
       .discover_btn_background {
@@ -909,18 +942,9 @@ footer {
       }
     }
   }
-  .about-section {
-    margin-bottom: -15vh;
-  }
-
-  // .services_wrap {
-  //   .service-figure {
-  //     .serv-decription {
-  //       font-size: 0.5vw !important;
-  //     }
-  //   }
+  // .about-section {
+  //   margin-bottom: -15vh;
   // }
-
 
 }
 
@@ -938,9 +962,9 @@ footer {
     }
   }
 
-  .about-section {
-    margin-bottom: 0vh;
-  }
+  // .about-section {
+  //   margin-bottom: 19vw;
+  // }
   
 }
 
@@ -974,7 +998,6 @@ footer {
   }
 
   .service-figure {
-   
     .contact_btn {
       top: 95%;
     }
