@@ -1,6 +1,6 @@
 var x, i, j, l, ll, selElmnt, a, b, c;
-/* Look for any elements with the class "custom-select": */
-x = document.getElementsByClassName("custom-select");
+/* Look for any elements with the class "select-wrap": */
+x = document.getElementsByClassName("select-wrap");
 l = x.length;
 for (i = 0; i < l; i++) {
   selElmnt = x[i].getElementsByTagName("select")[0];
@@ -78,3 +78,18 @@ function closeAllSelect(elmnt) {
 /* If the user clicks anywhere outside the select box,
 then close all select boxes: */
 document.addEventListener("click", closeAllSelect);
+
+
+
+
+
+/* Activation of the "autoplay" script */
+$('.autoplay').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 6000,
+  infinite: true,
+  speed: 4000,
+  slide: 'div',
+}); 
