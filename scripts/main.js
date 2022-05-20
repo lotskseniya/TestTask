@@ -1,3 +1,5 @@
+                 /* Set the customised select container for 
+                 the contact form */
 var x, i, j, l, ll, selElmnt, a, b, c;
 /* Look for any elements with the class "select-wrap": */
 x = document.getElementsByClassName("select-wrap");
@@ -52,7 +54,6 @@ for (i = 0; i < l; i++) {
     this.classList.toggle("select-arrow-active");
   });
 }
-
 function closeAllSelect(elmnt) {
   /* A function that will close all select boxes in the document,
   except the current select box: */
@@ -74,7 +75,6 @@ function closeAllSelect(elmnt) {
     }
   }
 }
-
 /* If the user clicks anywhere outside the select box,
 then close all select boxes: */
 document.addEventListener("click", closeAllSelect);
@@ -83,7 +83,7 @@ document.addEventListener("click", closeAllSelect);
 
 
 
-/* Activation of the "autoplay" script */
+              /* Activation of the "autoplay" script */
 $('.autoplay').slick({
   slidesToShow: 1,
   slidesToScroll: 1,
@@ -93,3 +93,14 @@ $('.autoplay').slick({
   speed: 4000,
   slide: 'div',
 }); 
+
+
+
+                /* Set the side navigation bar */
+function openNav() {
+  document.getElementById("my_active_menu").style.width = "16vw";
+}
+
+function closeNav() {
+  document.getElementById("my_active_menu").style.width = "0";
+}
