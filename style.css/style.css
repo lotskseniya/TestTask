@@ -926,6 +926,8 @@ footer .telephone {
     height: max-content;
     position: static;
     width: 73vw;
+    font-size: 2.2vw;
+    line-height: 3vw;
   }
   .service-figure .serv-decription br {
     display: none;
@@ -948,18 +950,16 @@ footer .telephone {
   .services_container .service-item .discover_btn_background .serv_discover_btn a span br {
     display: none;
   }
-  .services_section .services_wrap {
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+  .services_section .service-figure {
+    width: 90% !important;
+    padding-top: 3vw;
+    height: 19.5vh;
   }
-  .service-figure .contact_btn {
-    top: 110%;
-    padding: 4px 12px;
-    left: 20%;
-    font-size: 10px;
+  .services_section .service-figure .serv-decription ul {
+    font-size: 1.7vw !important;
   }
-  .service-figure .contact_btn a {
-    font-size: 8px;
+  .meta-figure {
+    height: 23.5vh !important;
   }
 }
 
@@ -971,7 +971,7 @@ footer .telephone {
   }
   .services_section {
     padding: 0;
-    width: 98%;
+    width: 100%;
   }
   .services_section .services_wrap {
     margin: 0 !important;
@@ -982,13 +982,15 @@ footer .telephone {
   .services_section .services_wrap .service-figure {
     margin-bottom: 0 !important;
     width: 150%;
-    height: 18vh !important;
   }
   .services_section .services_wrap .service-figure .figure-img {
     visibility: hidden !important;
   }
   .services_section .services_wrap .service-figure .contact_btn {
-    top: 14.9vw !important;
+    top: 17.9vw !important;
+  }
+  .services_section .services_wrap .service-figure .meta-contact-btn {
+    top: 28vw !important;
   }
 }
 
@@ -1000,6 +1002,17 @@ footer .telephone {
   .services_container .service-item .discover_btn_background {
     font-size: 55%;
     left: 0.3% !important;
+  }
+  .services_section .service-figure {
+    height: 31vh !important;
+    padding-bottom: 8vw !important;
+    width: 50% !important;
+  }
+  .services_section .service-figure .serv-decription ul {
+    font-size: 1.5vw !important;
+  }
+  .services_section .service-figure .meta-contact-btn {
+    top: 28vw !important;
   }
 }
 
@@ -1029,6 +1042,9 @@ footer .telephone {
     font-size: 15px;
     line-height: 17.36px;
   }
+  .services_section .services_wrap .service-figure {
+    width: 50%;
+  }
 }
 
 @media only screen and (min-width: 1400px) {
@@ -1054,7 +1070,9 @@ footer .telephone {
     height: 100vh;
   }
   .services_section .services_wrap {
-    height: 91vh;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
   }
 }
 /*# sourceMappingURL=style.css.map */
