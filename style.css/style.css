@@ -296,7 +296,7 @@ body .discover_btn a {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   text-align: center;
-  top: -25%;
+  top: -24.6%;
   left: 5.3%;
   z-index: 2;
 }
@@ -794,8 +794,11 @@ body .discover_btn a {
 
 .projects-section {
   margin-left: -2.5vw;
+  padding-top: 5vw;
+  padding-bottom: 5vw;
   width: 100%;
-  height: auto;
+  height: 62vw;
+  max-height: 66vh;
 }
 
 .projects-section .projects-wrap {
@@ -896,6 +899,10 @@ footer .copyright {
   margin-right: 3vw;
 }
 
+footer .telephone {
+  margin-left: 29vw;
+}
+
 @media only screen and (max-width: 490px) {
   body {
     padding-left: 10vw;
@@ -931,6 +938,15 @@ footer .copyright {
   }
   .proposals-section {
     margin-left: -5vw;
+  }
+  .services_container .service-item .discover_btn_background {
+    width: 40% !important;
+    height: 19% !important;
+    top: -22% !important;
+    left: 0.3% !important;
+  }
+  .services_container .service-item .discover_btn_background .serv_discover_btn a span br {
+    display: none;
   }
   .services_section .services_wrap {
     -ms-flex-pack: distribute;
@@ -972,7 +988,7 @@ footer .copyright {
     visibility: hidden !important;
   }
   .services_section .services_wrap .service-figure .contact_btn {
-    top: 16vw !important;
+    top: 14.9vw !important;
   }
 }
 
@@ -983,6 +999,7 @@ footer .copyright {
   }
   .services_container .service-item .discover_btn_background {
     font-size: 55%;
+    left: 0.3% !important;
   }
 }
 
@@ -1006,6 +1023,14 @@ footer .copyright {
   }
 }
 
+@media screen and (max-width: 980px) {
+  h2 {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 17.36px;
+  }
+}
+
 @media only screen and (min-width: 1400px) {
   .services_container .service-item .discover_btn_background {
     font-size: 30px;
@@ -1024,11 +1049,12 @@ footer .copyright {
   }
 }
 
-@media screen and (max-width: 980px) {
-  h2 {
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 17.36px;
+@media screen and (orientation: portrait) {
+  .projects-section {
+    height: 100vh;
+  }
+  .services_section .services_wrap {
+    height: 91vh;
   }
 }
 /*# sourceMappingURL=style.css.map */

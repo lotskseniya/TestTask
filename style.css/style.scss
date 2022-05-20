@@ -277,7 +277,7 @@ body {
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         text-align: center;
-        top: -25%;
+        top: -24.6%;
         left: 5.3%;
         z-index: 2;
 
@@ -730,8 +730,11 @@ body {
 // --------------projects section--------------
 .projects-section {
   margin-left: -2.5vw;
+  padding-top: 5vw;
+  padding-bottom: 5vw;
   width: 100%;
-  height: auto;
+  height: 62vw;
+  max-height: 66vh;
   
   .projects-wrap {
       width: 100%;
@@ -824,16 +827,16 @@ footer {
     margin-right: 3vw;
   }  
 
+  .telephone {
+    margin-left: 29vw;
+  } 
+
 }
-
-
 
 
 // -------------media-------------
 
 @media only screen and (max-width: 490px) {
-  // almost edited****
-  
   body {
     padding-left: 10vw;
   }
@@ -879,6 +882,26 @@ footer {
     margin-left: -5vw;
   }
 
+  .services_container {
+    .service-item {
+      .discover_btn_background {
+        width: 40% !important;
+        height: 19% !important;
+        top: -22% !important;
+        left: 0.3% !important;
+        .serv_discover_btn {
+          a {
+            span {
+              br {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
   .services_section {
     .services_wrap {
       justify-content: space-around;
@@ -897,7 +920,6 @@ footer {
       }
     }
   }
-
 }
 
 @media (min-width: 200px) and (max-width: 560px) {
@@ -924,18 +946,14 @@ footer {
        }
     
        .contact_btn {
-         top: 16vw !important;
+         top: 14.9vw !important;
        }
     }
   }
  }
-
 }
 
-
-
-@media (min-width:491px) and (max-width: 700px) {
-  
+@media (min-width:491px) and (max-width: 700px) {  
   .main-section {
     .learn_more {
       .discover_btn {
@@ -945,15 +963,14 @@ footer {
     }
   }
   
-  
   .services_container {
     .service-item {
       .discover_btn_background {
         font-size: 55%;
+        left: 0.3% !important;
       }
     }
   }
-
 }
 
 @media (min-width:701px) and (max-width: 900px) {
@@ -972,7 +989,6 @@ footer {
 }
 
 @media only screen and (min-width: 900px) {
-
   .services_container {
     .service-item {
       .service-img {
@@ -987,9 +1003,15 @@ footer {
       }
     }
   }
-
 }
 
+@media screen and (max-width: 980px) {
+  h2 {
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 17.36px;
+  }
+}
 
 @media only screen and (min-width: 1400px) {
   .services_container {
@@ -1007,7 +1029,6 @@ footer {
   }
 }
 
-
 @media only screen and (min-width: 2000px) {
   .services_container {
     .service-item {
@@ -1022,10 +1043,15 @@ footer {
   }
 }
 
-@media screen and (max-width: 980px) {
-  h2 {
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 17.36px;
+
+@media screen and (orientation: portrait) {
+  .projects-section {
+    height: 100vh;
+  }
+
+  .services_section {
+    .services_wrap {
+      height: 91vh;
+    }
   }
 }
