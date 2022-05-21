@@ -98,7 +98,7 @@ $('.autoplay').slick({
 
                 /* Set the side navigation bar */
 function openNav() {
-  document.getElementById("my_active_menu").style.width = "16vw";
+  document.getElementById("my_active_menu").style.width = "20vw";
 }
 
 function closeNav() {

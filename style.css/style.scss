@@ -94,7 +94,7 @@ body {
    
   .slogan {
     font-weight: 900;
-    font-size: 3.8vw;
+    font-size: 4vw;
     line-height: 6vw;
     margin-top: 6vw;
     text-transform: uppercase;
@@ -440,7 +440,7 @@ body {
     margin-inline-start: 1.15vw;
     margin-inline-end: 1.15vw;
     font-weight: 400;
-    font-size: 1.4vw;
+    font-size: 1.6vw;
     line-height: 2.2vw;
   }
 }
@@ -839,14 +839,32 @@ footer {
 @media only screen and (max-width: 490px) {
   body {
     padding-left: 10vw;
+
+    .onclick-menu {
+      font-size: 6vw;
+    }
+
+    .active_menu {
+      li {
+        font-size: 2.3vw;
+      }
   }
+
 
   .main-section {
     margin-bottom: 5vh;
     .learn_more {
+    span {
+      font-size: 1.6vw;
+    }
+
       .discover_btn {
-        height: 3vw;
-        line-height: 2vw;
+        height: 4vw;
+        line-height: 2.5vw;
+
+        a {
+          font-size: 1.8vw;
+        }
       }
     }
   }
@@ -862,6 +880,13 @@ footer {
       width: 73vw;
       font-size: 2.2vw;
       line-height: 3vw;
+       span {
+        font-size: 2.3vw;
+       }
+
+       #quote {
+        font-size: 2.3vw;
+       }
     }
   }
 
@@ -873,15 +898,57 @@ footer {
 
   .reviews-section {
     margin-left: -6vw;
+    .review {
+      .review-header {
+        margin-bottom: 1vw;
+      }
+      .review-text {
+        font-size: 2.2vw;
+      }
+    }
+     
   }
 
   .community-section {
     padding-top: 5vh;
+    .community-wrap {
+      .community-text {
+        p {
+          font-size: 1.8vw;
+          line-height:  2.8vw;;
+        }
+      }
+    } 
    
   }
 
   .proposals-section {
     margin-left: -5vw;
+    .proposals-wrap {
+      .form {
+        .form-container {
+          label {
+            font-size: 2vw;
+          }
+
+          input[type=text] {
+            font-size: 2vw;
+          }
+
+          input[type=submit] {
+            font-size: 2vw;
+          }
+
+          .select-wrap {
+            .select-selected {
+              font-size: 2vw;
+            }
+
+          }
+        }
+         
+      }
+    }   
   }
 
   .services_container {
@@ -894,6 +961,7 @@ footer {
         .serv_discover_btn {
           a {
             span {
+              font-size: 2vw !important;
               br {
                 display: none;
               }
@@ -920,6 +988,7 @@ footer {
   .meta-figure {
     height: 23.5vh !important;
   }
+}
 }
 
 @media (min-width: 200px) and (max-width: 560px) {
