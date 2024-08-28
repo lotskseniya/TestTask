@@ -12,7 +12,7 @@ html {
 
 body {
   background: #010101;
-  background-image: radial-gradient(circle at 25% -10%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 24%), radial-gradient(circle at 120% 35%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 24%), radial-gradient(circle at -20% 70%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 24%), radial-gradient(circle at 118% 75%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 24%), radial-gradient(circle at -20% 95%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 22%), radial-gradient(circle at 118% 100%, rgba(170, 20, 240, 0.49) 0%, rgba(170, 20, 240, 0) 22%);
+  background-image: radial-gradient(circle at 25% -10%, #8D4AF0 0%, rgba(170, 20, 240, 0) 24%), radial-gradient(circle at 120% 35%, #8D4AF0 0%, rgba(170, 20, 240, 0) 24%), radial-gradient(circle at -20% 70%, #8D4AF0 0%, rgba(170, 20, 240, 0) 24%), radial-gradient(circle at 118% 75%, #8D4AF0 0%, rgba(170, 20, 240, 0) 24%), radial-gradient(circle at -20% 95%, #8D4AF0 0%, rgba(170, 20, 240, 0) 22%), radial-gradient(circle at 118% 100%, #8D4AF0 0%, rgba(170, 20, 240, 0) 22%);
   background-repeat: no-repeat;
   padding-left: 58.38px;
 }
@@ -86,7 +86,7 @@ body .discover_btn a {
 
 .main-section {
   width: 100%;
-  background: url("../images/mainsection/Group2.png") no-repeat 85%;
+  display: inline-flex;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
@@ -99,8 +99,68 @@ body .discover_btn a {
   line-height: 6vw;
   margin-top: 6vw;
   text-transform: uppercase;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(22%, #cfc09f), color-stop(24%, #634f2c), color-stop(26%, #cfc09f), color-stop(27%, #cfc09f), color-stop(40%, #ffecb3), to(#3a2c0f));
-  background-image: linear-gradient(to bottom, #cfc09f 22%, #634f2c 24%, #cfc09f 26%, #cfc09f 27%, #ffecb3 40%, #3a2c0f 100%);
+  background-image:  -moz-linear-gradient(
+    -72deg,
+    #dedeff,
+    #ffffff 16%,
+    #dedeff 21%,
+    #ffffff 24%,
+    #555564 27%,
+    #dedeff 36%,
+    #ffffff 45%,
+    #ffffff 60%,
+    #dedeff 72%,
+    #ffffff 80%,
+    #dedeff 84%,
+    #555564
+  );
+  background-image: -webkit-linear-gradient(
+    -72deg,
+    #dedeff,
+    #ffffff 16%,
+    #dedeff 21%,
+    #ffffff 24%,
+    #555564 27%,
+    #dedeff 36%,
+    #ffffff 45%,
+    #ffffff 60%,
+    #dedeff 72%,
+    #ffffff 80%,
+    #dedeff 84%,
+    #555564
+  );
+  background-image:
+  -o-linear-gradient(
+    -72deg,
+    #dedeff,
+    #ffffff 16%,
+    #dedeff 21%,
+    #ffffff 24%,
+    #555564 27%,
+    #dedeff 36%,
+    #ffffff 45%,
+    #ffffff 60%,
+    #dedeff 72%,
+    #ffffff 80%,
+    #dedeff 84%,
+    #555564
+  );
+  background-image:
+  linear-gradient(
+    -72deg,
+    #dedeff,
+    #ffffff 16%,
+    #dedeff 21%,
+    #ffffff 24%,
+    #555564 27%,
+    #dedeff 36%,
+    #ffffff 45%,
+    #ffffff 60%,
+    #dedeff 72%,
+    #ffffff 80%,
+    #dedeff 84%,
+    #555564
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #fff;
@@ -108,11 +168,19 @@ body .discover_btn a {
   background-repeat: repeat;
 }
 
+
 .main-section .slogan_description {
   margin-top: 24.12px;
   line-height: 2.8vw;
   font-size: 1.8vw;
   font-weight: 700;
+}
+
+#globeCanvas {
+ align-self: center;
+	padding: 8px;
+	width: 400px;
+	height: 300px;
 }
 
 .main-section .learn_more {

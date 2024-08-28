@@ -1,1 +1,1 @@
-This repository contains exam project of the website for metaverse marketing agency
+This repository contains project of the website for Metaverse Marketing Agency

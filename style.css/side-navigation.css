@@ -32,7 +32,22 @@
     }
 
     .active_menu a:hover {
-        background-image: linear-gradient(to bottom, #cfc09f 22%, #634f2c 24%, #cfc09f 26%, #cfc09f 27%, #ffecb3 40%, #3a2c0f 100%);
+        background-image:
+        linear-gradient(
+          -72deg,
+          #dedeff,
+          #ffffff 16%,
+          #dedeff 21%,
+          #ffffff 24%,
+          #555564 27%,
+          #dedeff 36%,
+          #ffffff 45%,
+          #ffffff 60%,
+          #dedeff 72%,
+          #ffffff 80%,
+          #dedeff 84%,
+          #555564
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
