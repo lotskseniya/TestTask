@@ -29,7 +29,7 @@ const light = new THREE.DirectionalLight( 'white', 2 );
     scene.add( light );
 
   const globe = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(2.4, 8),
+    new THREE.IcosahedronGeometry(2.6, 8),
      new THREE.MeshPhongMaterial({
         color: 0xffffff,
         wireframe: true,
@@ -40,6 +40,7 @@ const light = new THREE.DirectionalLight( 'white', 2 );
 
 function animationLoop( t )
 {
+  console.log(innerWidth)
 
     globe.rotation.x = Math.sin( t/700 );
     globe.rotation.y = Math.sin( t/900 );

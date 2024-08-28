@@ -179,8 +179,9 @@ body .discover_btn a {
 #globeCanvas {
  align-self: center;
 	padding: 8px;
-	width: 400px;
-	height: 300px;
+	width: 35vw;
+	height: 35vh;
+  justify-self: flex-end;
 }
 
 .main-section .learn_more {
@@ -1103,6 +1104,7 @@ footer .telephone {
   .services_section .services_wrap .service-figure .meta-contact-btn {
     top: 28vw !important;
   }
+  
 }
 
 @media (min-width: 491px) and (max-width: 700px) {
