@@ -1,9 +1,7 @@
 Backpack Configurator with web AR viewing function
 
 
-🚀 Live Demo:
-
-
+🚀 Live Demo:  https://testtask-lac.vercel.app/
 
 🛠️ Tech Stack:
 Created using vanilla JS and THREE.js
