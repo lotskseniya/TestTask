@@ -10,7 +10,7 @@
   <body>
     <div id="container">
       <div>
-        <button class="popup-btn" id="popupBtn" onclick="showPopup()">
+        <button class="popup-btn" id="popupBtn">
           <img
             src="/assets/Vector.png"
             alt="3D View Icon"
@@ -99,7 +99,13 @@
 
     <!-- Popup Overlay -->
     <div class="popup-overlay" id="popupOverlay">
-      <button id="closeBtn" onclick="hidePopup()">&times;</button>
+      <button id="closeBtn" onclick="hidePopup()">
+        <img
+          src="/assets/close-icon.png"
+          alt="Close Icon"
+          class="close-icon"
+        />
+      </button>
       <div class="popup-menu">
         
         <p class="popup-header">
@@ -120,6 +126,45 @@
     </div>
 
     <script src="/configartorScript.js" type="module"></script>
-    <script src="/qrPopUpScript.js"></script>
+     <!-- Embed JavaScript directly because of the vercel issues-->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const popupBtn = document.getElementById("popupBtn");
+            const popupOverlay = document.getElementById("popupOverlay");
+            
+            function showPopup() {
+                if (popupOverlay) {
+                    popupOverlay.classList.add("active");
+                    document.body.style.overflow = "hidden";
+                }
+            }
+            
+            function hidePopup() {
+                if (popupOverlay) {
+                    popupOverlay.classList.remove("active");
+                    document.body.style.overflow = "auto";
+                }
+            }
+
+            window.showPopup = showPopup;
+            window.hidePopup = hidePopup;
+            
+            if (popupBtn) {
+                popupBtn.addEventListener("click", showPopup);
+            }
+            
+            window.addEventListener("click", (event) => {
+                if (event.target === popupOverlay) {
+                    hidePopup();
+                }
+            });
+            
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Escape") {
+                    hidePopup();
+                }
+            });
+        });
+    </script>
   </body>
 </html>

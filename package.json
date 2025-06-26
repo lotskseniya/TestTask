@@ -1,14 +1,14 @@
 {
-  "name": "threeboilerplate",
+  "name": "test-task",
   "version": "1.0.0",
-  "description": "The Three.js boilerplate that I'm using in my Tutorials.",
+  "description": "Backpack Configurator with Three.js",
   "main": "script.js",
   "scripts": {
     "start": "vite",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Wael Yasmina",
+  "author": "Kseniya Lotsman",
   "license": "ISC",
   "dependencies": {
     "three": "^0.176.0"
