@@ -1,312 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Backpack Configurator</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MetaWise Agency</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="./style.css/style.css">
-    <link rel="stylesheet" href="./style.css/side-navigation.css">
-</head>
+  <body>
+    <div id="container">
+      <div>
+        <button class="popup-btn" id="popupBtn" onclick="showPopup()">
+          <img
+            src="/assets/Vector.png"
+            alt="3D View Icon"
+            class="three-d-icon"
+          />
+          <span>See In Real Life</span>
+        </button>
+      </div>
 
-<body>
+      <div id="backpackCanvas"></div>
 
-    <header class="header">
-        <nav class="menu main-page-menu">
-            <ul>
-                <li><a href="./projects.html">PROJECTS</a> </li>
-                <li><a href="#our-community">OUR COMMUNITY</a></li>
-                <li><a href="./services.html">SERVICES</a></li>
-                <li><a href="#our-story">OUR STORY</a></li>
-                <li class="gradient_text"><a href="#">HOME</a></li>
-            </ul>
-        </nav>
-    </header>
+      <div id="controls">
+        <div class="color-controls">
+          <h3 class="configurator-menu-headers">Body Color</h3>
+          <hr />
+          <div class="container-buttons">
+            <button
+              class="brown-btn round-button"
+              onclick="changeColor('brown')"
+              data-color="brown"
+            ></button>
+            <button
+              class="black-btn round-button"
+              onclick="changeColor('black')"
+              data-color="black"
+            ></button>
+            <button
+              class="blue-btn round-button"
+              onclick="changeColor('blue')"
+              data-color="blue"
+            ></button>
+          </div>
+        </div>
 
-    <span class="onclick-menu" onclick="openNav()">☰</span>
-    <div id="my_active_menu" class="active_menu">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <li class="gradient_text"><a href="#">HOME</a></li>
-        <li><a href="#our-story">OUR STORY</a></li>
-        <li><a href="./services.html">SERVICES</a></li>
-        <li><a href="#our-community">OUR COMMUNITY</a></li>
-        <li><a href="./projects.html">PROJECTS</a> </li>
+        <div class="metal-controls">
+          <h3 class="configurator-menu-headers">Metal Color</h3>
+          <hr />
+          <div class="container-buttons">
+            <button
+              class="silver-metal-btn round-button"
+              onclick="changeMetal('silver')"
+              data-metal="silver"
+            ></button>
+            <button
+              class="gold-metal-btn round-button"
+              onclick="changeMetal('gold')"
+              data-metal="gold"
+            ></button>
+            <button
+              class="black-metal-btn round-button"
+              onclick="changeMetal('black')"
+              data-metal="black"
+            ></button>
+          </div>
+        </div>
+
+        <div class="fabric-controls">
+          <h3 class="configurator-menu-headers">Material</h3>
+          <hr />
+          <div class="container-buttons">
+            <button
+              class="leather-btn text-button"
+              onclick="changeFabric('leather')"
+              data-fabric="leather"
+            >
+              Leather
+            </button>
+            <button
+              class="fabric-btn text-button"
+              onclick="changeFabric('fabric')"
+              data-fabric="fabric"
+            >
+              Fabric
+            </button>
+            <button
+              class="text-button"
+              onclick="changeFabric('denim')"
+              data-fabric="denim"
+            >
+              Denim
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" id="popupOverlay">
+      <button id="closeBtn" onclick="hidePopup()">&times;</button>
+      <div class="popup-menu">
+        
+        <p class="popup-header">
+          Scan the QR code with your phone. Within 1-3 seconds the AR function
+          opens on your phone.
+        </p>
 
-    <section class="main-section">
-     
-        <div class="slogan-container">
-        <H1 class="slogan"> Unique Digital Presence <br>
-            in the Metaverse World <br>
-            Starts Here
-        </H1>
-
-
-        <div class="slogan_description">
-            <span> Strategic and Consulting Services in all areas <br>
-                ranging from Metaverse Branding to Digital Marketing
-            </span>
+        <div class="qr-code-container">
+          <a href="#backpackCanvas" onclick="handleMenuClick('home')">
+            <img
+              src="/assets/qr-code.png"
+              alt="QR Code"
+              class="qr-code-image"
+            />
+          </a>
         </div>
+      </div>
+    </div>
 
-        <div class="learn_more">
-            <div class="discover_btn">
-                <a href="https://www.investopedia.com/web-20-web-30-5208698#toc-web-30" target="_blank">Learn More</a>
-            </div>
-
-            <span>Everything you should know about WEB 3.0 </span>
-        </div>
-
-        <div class="vr-users-stat">
-            <img src="./images/mainsection/avatars.svg" alt="avatars" class="avatars-of-all-users">
-
-            <div id="dot"></div>
-            <span> 400k people online</span>
-        </div>
-       </div>
-
-        <div id="globeCanvas"> </div>
-
-
-    </section>
-
-
-    <section class="about-section">
-
-        <div class="image-about-container">
-            <div class="video-container">
-                <video class="video" src="./images/aboutsection/1056241610-preview.mp4" autoplay muted loop></video>
-            </div>
-        </div>
-
-        <div class="about-text-conatainer">
-            <h3 id="our-story">Our Story </h3>
-            <span> The idea for <span class="gradient_text">MetaWise</span> started when we were organizing Travis Scott
-                concert in Fortnite in 2020,
-                which was witnessed by over 27 million people! Preparation of such a global event in the Reality that
-                are absolutly Unlimited - inspired us to establish an Agency that will solve any kind of cases,
-                related to the Metaverse experience. </span>
-            <br><br>
-            <span>We’re an international digital marketing consulting firm with experts in digital & technology
-                consulting . </span>
-            <br>
-            <span>We strive to create unique and sucessful digital transformation for both: companies & individuals and
-                propose services,
-                related to the blockchain technologies. Here, at <span class="gradient_text">MetaWise</span> We can
-                create NFT or Blockchain Games
-                <span class="gradient_text">or</span> establish PR campaign for your Cryptocurrency
-                <span class="gradient_text">or</span> help you to rock the Metaverse Universe. </span>
-            <br><br>
-            <span id="quote"> &laquo;Every company, every system and digital services, job agency that is doing
-                something in web design - will be doing something for the Metaverse&raquo; </span>
-            <span> Ray Wang, Constellation Research</span>
-        </div>
-
-
-    </section>
-
-
-
-    <section class="services_section">
-        <h2 id="our-services">Our Services </h2>
-        <div class="services_container">
-            <div class="service-item">
-                <img src="./images/servicessection/serv2.png" alt="service-illustration" class="service-img" />
-                <div class="discover_btn_background">
-                    <div class="serv_discover_btn">
-                        <a href="./services.html#metaverse-service"> <span> METAVERSE <br> MARKETING</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-item">
-                <img src="./images/servicessection/serv1.png" alt="service-illustration" class="service-img" />
-                <div class="discover_btn_background">
-                    <div class="serv_discover_btn">
-                        <a href="./services.html#technical-service"><span> TECHNICAL <br> SERVICES</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-item">
-                <img src="./images/servicessection/serv3.png" alt="service-illustration" class="service-img" />
-                <div class="discover_btn_background">
-                    <div class="serv_discover_btn">
-                        <a href="./services.html#metaevents-service"><span> METAVERSE EVENTS</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-item">
-                <img src="./images/servicessection/serv4.png" alt="service-illustration" class="service-img" />
-                <div class="discover_btn_background">
-                    <div class="serv_discover_btn">
-                        <a href="./services.html#blockchain-service"><span>CRYPTO MARKETING</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-
-    <section class="reviews-section">
-        <div class="reviews-wrap">
-            <div class="reviews-header">
-                <h2>What our clients say:</h2>
-
-                <p class="rewiews-p">See what our clients say about us. It really matter for us.
-                    <br> We believe success comes from working together to do good work and serve those around us.
-                </p>
-            </div>
-
-            <div class="review item1">
-                <p class="review-header">starstar<span>star</span></p>
-                <p class="review-text">“I know in real-time where the money is spent,and
-                    I don’t have to lend out the company’s credit card
-                    anymore. What a relief!”
-                </p>
-                <div class="reviewers">
-                    <div class="reviewer-photo">
-                        <img src="./images/reviewssection/avatar1.svg" alt="rewier-photo">
-                    </div>
-                    <p class="reviewer-name">Denny Hilguston</p>
-
-                    <p class="reviewer-email">@denny.hill</p>
-                </div>
-            </div>
-
-            <div class="review item2">
-                <p class="review-header">starstar<span>star</span></p>
-                <p class="review-text">“3D Models are impressive! The improvements in design and resolution and much
-                    more than a modern VR objects.”
-                </p>
-                <div class="reviewers">
-                    <div class="reviewer-photo">
-                        <img src="./images/reviewssection/avatar2.svg" alt="rewier-photo">
-                    </div>
-                    <p class="reviewer-name">Vani Pandey</p>
-
-                    <p class="reviewer-email">@vani.pandey</p>
-                </div>
-            </div>
-
-            <div class="review item3">
-                <p class="review-header">starstar<span>star</span></p>
-                <p class="review-text">“I can actually see the sugnifical improvement in our seils, since we ordered
-                    from MetaWise NFT collection.”
-                </p>
-                <div class="reviewers">
-                    <div class="reviewer-photo">
-                        <img src="./images/reviewssection/avatar3.svg" alt="rewier-photo">
-                    </div>
-                    <p class="reviewer-name">Milly Singh</p>
-
-                    <p class="reviewer-email">@milly.singh</p>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <section class="community-section">
-        <div class="community-wrap">
-            <div class="community-text">
-                <h2 id="our-community">Our community</h2>
-                <p>Our company has an amazing and creativy community in the most well-known social medias and instant
-                    messaging platforms</p>
-            </div>
-
-            <div class="social-medias">
-                <div class="medias-icon">
-                    <a href="https://www.instagram.com/" target="_blank">
-                        <img src="./images/communitysection/icons/instagram.svg" alt="instagram-icon"
-                            class="instagram-icon">
-                        <p>Instagram</p>
-                    </a>
-                </div>
-
-                <div class="medias-icon">
-                    <a href="https://discord.com/" target="_blank">
-                        <img src="./images/communitysection/icons/discord.svg" alt="discord-icon" class="discord-icon">
-                        <p>Discord</p>
-                    </a>
-                </div>
-
-                <div class="medias-icon">
-                    <a href="https://youtube.com/" target="_blank">
-                        <img src="./images/communitysection/icons/youtube.svg" alt="youtube-icon" class="youtube-icon">
-                        <p class="youtube">Youtube</p>
-                    </a>
-                </div>
-
-                <div class="medias-icon">
-                    <a href="https://twitter.com/" target="_blank">
-                        <img src="./images/communitysection/icons/x-twitter.svg" alt="twitter-icon" class="twitter-icon">
-                        <p class="twitter">X</p> 
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="proposals-section">
-        <div class="proposals-wrap">
-            <div class="form">
-                <h2>Got A Project In Mind?</h2>
-                <p>Contact our team today and we will get in touch as soon as possible.</p>
-
-                <div class="form-container">
-                    <form action="index.html">
-
-                        <label for="fname">Contact Name</label>
-                        <input type="text" id="fname" name="name" placeholder="Your first and last name...">
-                        
-                        <label for="mailortelephone">Contact information</label>
-                        <input type="email" name="contact" id="mailortelephone" placeholder="Write your contact telephone     or    e-mail">
-
-                        <label for="subject">Project</label>
-                        <textarea id="subject" name="subject" placeholder="Write your idea here "
-                            style="height:200px"></textarea>
-     <br>
-                        <label for="typeof-project" id="type-of-project">Field of Project</label>
-                        <div class="select-wrap" style="width:32vw;">
-                            <select id="typeof-project" name="-typeof-project">
-                                <option value="nft">NFT</option>
-                                <option value="metaevents">Metaverse Events</option>
-                                <option value="prodplacement">Metaverse Product/Idea Placement</option>
-                                <option value="cryptocurrency">Cryptocurrency</option>
-                                <option value="anotheroption">Another Field</option>
-                                
-                            </select>
-                        </div>
-
-                        <input type="submit" value="Submit">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <footer>
-        <span class="copyright">© 2024 by <span class="gradient_text">MetaWise</span></span>
-        <a href="mailto:contact@metawise.com.io">contact@metawise.com.io</a></p>
-        <span class="telephone"> +38 000 111 22 33</span>
-    </footer>
-
-    <script type="module" src="./scripts/space.js"></script>
-    <script src="./scripts/main.js"></script> 
-</body>
-
+    <script src="/configartorScript.js" type="module"></script>
+    <script src="/qrPopUpScript.js"></script>
+  </body>
 </html>
