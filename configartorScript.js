@@ -106,17 +106,17 @@ function createFabrics() {
 
   const materialConfigs = {
     leather: {
-      texturePath: "/assets/leather-texture.jpg",
+      texturePath: "/public/backpack/leather_baseColor.jpg",
       metalness: 0.1,
       roughness: 0.4,
     },
     fabric: {
-      texturePath: "/assets/fabric-texture.jpg",
+      texturePath: "/public/backpack/fabric_baseColor.jpg",
       metalness: 0.2,
       roughness: 0.85,
     },
     denim: {
-      texturePath: "/assets/denim-texture.jpg",
+      texturePath: "/public/backpack/denim_baseColor.jpg",
       roughness: 1,
       metalness: 0.0,
     },
@@ -124,18 +124,13 @@ function createFabrics() {
 
   // Fabrics creation:
   for (const [key, config] of Object.entries(materialConfigs)) {
-    const texture = loadTexture(config.texturePath);
-
-    if (materialConfigs["leather"]) {
-      texture.offset.set(0.0, 0.2);
-    }
+    const texture = loadTexture(config.texturePath).flipY = false;
 
     materials[key] = new THREE.MeshStandardMaterial({
       map: texture,
       metalness: config.metalness,
       roughness: config.roughness,
       side: THREE.DoubleSide,
-      color: window.currentColor,
     });
   }
 
