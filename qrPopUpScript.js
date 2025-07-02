@@ -1,5 +1,6 @@
 const popupBtn = document.getElementById("popupBtn");
 const popupOverlay = document.getElementById("popupOverlay");
+const modelViewer = document.querySelector('backpackModel');
 
 function showPopup() {
     popupOverlay.classList.add("active");
@@ -9,13 +10,17 @@ function showPopup() {
 function hidePopup() {
     popupOverlay.classList.remove("active");
     document.body.style.overflow = "auto";
+    document.querySelector("#backpackModel").style.display = "none";
+    document.querySelector("#container").style.display = "flex";
 }
 
 popupBtn.addEventListener("click", showPopup);
 
-function hidePopup() {
+function showARModule() {
   document.getElementById("popupOverlay").classList.remove("active");
   document.body.style.overflow = "auto";
+  document.querySelector("#backpackModel").style.display = "flex";
+  document.querySelector("#container").style.display = "none";
 }
 
 function handleMenuClick(item) {
@@ -24,13 +29,13 @@ function handleMenuClick(item) {
 
 window.addEventListener("click", (event) => {
     if (event.target === popupOverlay) {
-        hidePopup();
+        showARModule();
     }
 });
 
 // Close popup with Escape key
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
-    hidePopup();
+    showARModule();
   }
 });

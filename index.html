@@ -26,7 +26,7 @@
         <div class="color-controls">
           <h3 class="configurator-menu-headers">Body Color</h3>
           <hr />
-          <div class="container-buttons">
+          <div class="container-buttons" id="colorControls">
             <button
               class="brown-btn round-button"
               onclick="changeColor('brown')"
@@ -100,21 +100,16 @@
     <!-- Popup Overlay -->
     <div class="popup-overlay" id="popupOverlay">
       <button id="closeBtn" onclick="hidePopup()">
-        <img
-          src="/assets/close-icon.png"
-          alt="Close Icon"
-          class="close-icon"
-        />
+        <img src="/assets/close-icon.png" alt="Close Icon" class="close-icon" />
       </button>
       <div class="popup-menu">
-        
         <p class="popup-header">
           Scan the QR code with your phone. Within 1-3 seconds the AR function
           opens on your phone.
         </p>
 
         <div class="qr-code-container">
-          <a href="#backpackCanvas" onclick="hidePopup()">
+          <a href="#backpackModel" onclick="showARModule()">
             <img
               src="/assets/qr-code.png"
               alt="QR Code"
@@ -125,46 +120,24 @@
       </div>
     </div>
 
-    <script src="/configartorScript.js" type="module"></script>
-     <!-- Embed JavaScript directly because of the Vercel issues with two scripts-->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const popupBtn = document.getElementById("popupBtn");
-            const popupOverlay = document.getElementById("popupOverlay");
-            
-            function showPopup() {
-                if (popupOverlay) {
-                    popupOverlay.classList.add("active");
-                    document.body.style.overflow = "hidden";
-                }
-            }
-            
-            function hidePopup() {
-                if (popupOverlay) {
-                    popupOverlay.classList.remove("active");
-                    document.body.style.overflow = "auto";
-                }
-            }
+    <div>
+      <model-viewer
+        id="backpackModel"
+        src="/public/backpack/backpack.glb"
+        alt="A 3D model of a backpack"
+        xr-environment
+        camera-controls touch-action="pan-y" interaction-prompt="none"
+        ios-src="/public/backpack/backpack.usdz"
+        style="display: none"
+        onload="saveChanges()"
+      ></model-viewer>
+    </div>
 
-            window.showPopup = showPopup;
-            window.hidePopup = hidePopup;
-            
-            if (popupBtn) {
-                popupBtn.addEventListener("click", showPopup);
-            }
-            
-            window.addEventListener("click", (event) => {
-                if (event.target === popupOverlay) {
-                    hidePopup();
-                }
-            });
-            
-            document.addEventListener("keydown", function (e) {
-                if (e.key === "Escape") {
-                    hidePopup();
-                }
-            });
-        });
-    </script>
+    <script src="/configartorScript.js" type="module"></script>
+    <script src="/qrPopUpScript.js"></script>
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
+    ></script>
   </body>
 </html>

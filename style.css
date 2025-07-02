@@ -62,6 +62,13 @@ body {
   width: auto;
 }
 
+#backpackModel {
+     justify-content: center;
+  align-items: center;
+  height: 50dvh;
+  width: auto;
+}
+
 .configurator-menu-headers {
   color: rgba(26, 26, 26, 1);
   margin: 0 0 0 0;

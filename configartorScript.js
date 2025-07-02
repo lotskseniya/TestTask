@@ -33,6 +33,24 @@ let backpackModel = null;
 const metalButtons = document.querySelectorAll("[data-metal]");
 const fabricButtons = document.querySelectorAll("[data-fabric]");
 const colorButtons = document.querySelectorAll("[data-color]");
+const materialConfigs = {
+  leather: {
+    texturePath: "/public/backpack/leather_baseColor.jpg",
+    metalness: 0.1,
+    roughness: 0.4,
+  },
+  fabric: {
+    texturePath: "/public/backpack/fabric_baseColor.jpg",
+    roughness: 0.7,
+    metalness: 0.0,
+  },
+  denim: {
+    texturePath: "/public/backpack/denim_baseColor.jpg",
+    roughness: 0.6,
+    metalness: 0.1,
+  },
+};
+const modelViewer = document.querySelector("model-viewer#backpackModel");
 
 function init() {
   const canvas = document.getElementById("backpackCanvas");
@@ -104,27 +122,9 @@ function createFabrics() {
     );
   };
 
-  const materialConfigs = {
-    leather: {
-      texturePath: "/public/backpack/leather_baseColor.jpg",
-      metalness: 0.1,
-      roughness: 0.4,
-    },
-    fabric: {
-      texturePath: "/public/backpack/fabric_baseColor.jpg",
-      metalness: 0.2,
-      roughness: 0.85,
-    },
-    denim: {
-      texturePath: "/public/backpack/denim_baseColor.jpg",
-      roughness: 1,
-      metalness: 0.0,
-    },
-  };
-
   // Fabrics creation:
   for (const [key, config] of Object.entries(materialConfigs)) {
-    const texture = loadTexture(config.texturePath).flipY = false;
+    const texture = (loadTexture(config.texturePath).flipY = false);
 
     materials[key] = new THREE.MeshStandardMaterial({
       map: texture,
@@ -149,7 +149,7 @@ function createFabrics() {
     }
   }
 
-  return materials;
+  return materials, materialConfigs;
 }
 
 function createMetals() {
@@ -314,7 +314,7 @@ function changeColor(colorName) {
   if (backpackModel) {
     backpackModel.traverse(function (node) {
       if (node.isMesh) {
-        console.log(`Changing color of mesh: "${node.name}"`); 
+        console.log(`Changing color of mesh: "${node.name}"`);
 
         // Change color only for the main mesh and straps:
         if (node.name === "Mesh" || node.name === "Mesh_2") {
@@ -331,8 +331,7 @@ function changeColor(colorName) {
           } else {
             button.classList.remove("active");
           }
-        }
-        );
+        });
       }
     });
   }
@@ -355,12 +354,9 @@ function changeFabric(materialName) {
             node.originalMaterial = node.material;
           }
 
-          node.material = material.clone(); 
+          node.material = material.clone();
           node.material.needsUpdate = true;
           node.material.color.set(window.currentColor);
-          node.material.map.wrapS = THREE.RepeatWrapping;
-          node.material.map.wrapT = THREE.RepeatWrapping;
-          node.material.map.repeat.set(3, 3);
         }
 
         // Fabric applied to straps:
@@ -368,9 +364,6 @@ function changeFabric(materialName) {
           node.material = material.clone();
           node.material.needsUpdate = true;
           node.material.color.set(window.currentColor);
-          node.material.map.wrapS = THREE.RepeatWrapping;
-          node.material.map.wrapT = THREE.RepeatWrapping;
-          node.material.map.repeat.set(2, 2);
         }
 
         // active class added to the clicked button:
@@ -428,7 +421,6 @@ function applyFabricToModel(material) {
   if (backpackModel) {
     backpackModel.traverse(function (node) {
       if (node.isMesh) {
-
         // Change of the fabric of the main mesh and straps:
         if (node.name === "Mesh" || node.name === "Mesh_2") {
           node.material = material;
@@ -441,6 +433,39 @@ function applyFabricToModel(material) {
       }
     });
   }
+}
+
+async function saveChanges() {
+  await backpackModel;
+
+  const modelData = {
+    color: window.currentColorName,
+    fabric: window.currentFabricName,
+    metal: window.currentMetalName,
+  };
+
+  const material = modelViewer.model.materials[0]; 
+
+  // Changing the color for AR model:
+  if (modelData.color === "brown") {
+    material.pbrMetallicRoughness.setBaseColorFactor(new THREE.Color(0xcb8240));
+  } else if (modelData.color === "blue") {
+    material.pbrMetallicRoughness.setBaseColorFactor(new THREE.Color(0x4169e1));
+  } else if (modelData.color === "black") {
+    material.pbrMetallicRoughness.setBaseColorFactor(new THREE.Color(0x574952));
+  }
+
+  const textureLoader = new THREE.TextureLoader();
+  textureLoader.load(
+    materialConfigs[modelData.fabric].texturePath,
+    (newTexture) => {
+      const existingTexture = material.pbrMetallicRoughness.baseColorTexture;
+
+      if (existingTexture && existingTexture.texture) {
+        
+      }
+    }
+  );
 }
 
 function animate() {
@@ -464,28 +489,29 @@ function initScene() {
   loadModel();
 }
 
+saveChanges();
+
 renderer.setAnimationLoop(animate);
 
 window.addEventListener("load", initScene);
 window.addEventListener("resize", handleResize);
 window.addEventListener("orientationchange", handleResize);
 
-                   // For more comfort DevTools device simulation:
-let lastWidth = window.innerWidth;
-let lastHeight = window.innerHeight;
+// For more comfort DevTools device simulation:
+// let lastWidth = window.innerWidth;
+// let lastHeight = window.innerHeight;
 
-function checkForSizeChange() {
-    if (window.innerWidth !== lastWidth || window.innerHeight !== lastHeight) {
-        lastWidth = window.innerWidth;
-        lastHeight = window.innerHeight;
-        handleResize();
-    }
-}
-// Poll for size changes (useful for DevTools)
-setInterval(checkForSizeChange, 100);
+// function checkForSizeChange() {
+//     if (window.innerWidth !== lastWidth || window.innerHeight !== lastHeight) {
+//         lastWidth = window.innerWidth;
+//         lastHeight = window.innerHeight;
+//         handleResize();
+//     }
+// }
+// setInterval(checkForSizeChange, 100);
 
 // Export functions for external use
 window.changeColor = changeColor;
 window.changeFabric = changeFabric;
 window.changeMetal = changeMetal;
-
+window.saveChanges = saveChanges;
