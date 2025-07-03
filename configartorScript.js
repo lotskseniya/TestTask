@@ -36,21 +36,37 @@ const colorButtons = document.querySelectorAll("[data-color]");
 const materialConfigs = {
   leather: {
     texturePath: "/public/backpack/leather_baseColor.jpg",
-    metalness: 0.1,
+    normalPath: "/public/backpack/leather_normal.jpg",
+    roughnessPath: "/public/backpack/leather_occlusionRoughnessMetallic.jpg",
+    metalness: 0.2,
     roughness: 0.4,
   },
   fabric: {
-    texturePath: "/public/backpack/fabric_baseColor.jpg",
-    roughness: 0.7,
-    metalness: 0.0,
+    texturePath: "/public/backpack/denim_baseColor.jpg",
+    normalPath: "/public/backpack/fabric_normal.jpg",
+    roughnessPath: "/public/backpack/fabric_occlusionRoughnessMetallic.jpg",
+    metalness: 0.1,
+    roughness: 0.8,
   },
   denim: {
-    texturePath: "/public/backpack/denim_baseColor.jpg",
+    texturePath: "/public/backpack/fabric_baseColor.jpg", // In my opinion - it's better to switch fabric and denim textures
+    normalPath: "/public/backpack/denim_normal.jpg",
+    roughnessPath: "/public/backpack/denim_occlusionRoughnessMetallic.jpg",
+    metalness: 0.2,
     roughness: 0.6,
-    metalness: 0.1,
   },
 };
+ const colorsConfig = {
+    brown: 0xcb8240,
+    black: 0x574952,
+    blue: 0x6f8faf,
+  };
 const modelViewer = document.querySelector("model-viewer#backpackModel");
+modelViewer.addEventListener("model-visibility", function (event) {
+  if (event.detail.visible) {
+    saveChanges();
+  }
+});
 
 function init() {
   const canvas = document.getElementById("backpackCanvas");
@@ -80,11 +96,6 @@ function setupLight() {
 
 function createColor() {
   const colorLoader = new THREE.Color();
-  const colorsConfig = {
-    brown: 0xcb8240,
-    black: 0x574952,
-    blue: 0x4169e1,
-  };
 
   // Colors creation:
   for (const [key, value] of Object.entries(colorsConfig)) {
@@ -128,9 +139,9 @@ function createFabrics() {
 
     materials[key] = new THREE.MeshStandardMaterial({
       map: texture,
-      metalness: config.metalness,
-      roughness: config.roughness,
       side: THREE.DoubleSide,
+      metalness: config.metalness || 0.0,
+      roughness: config.roughness || 1.0,
     });
   }
 
@@ -238,16 +249,30 @@ function createMetals() {
       envMapIntensity: 0.8,
       clearcoat: 0.2,
       clearcoatRoughness: 0.15,
+      side: THREE.FrontSide, // Ensures the material is rendered correctly
+      onBeforeCompile: (shader) => {
+        shader.uniforms.envMapIntensity = { value: 0.8 };
+        shader.uniforms.clearcoat = { value: 0.2 };
+        shader.uniforms.clearcoatRoughness = { value: 0.15 };
+        shader.uniforms.normalScale = { value: new THREE.Vector2(0.5, 0.5) };
+      }
     },
     black: {
-      color: new THREE.Color(0xc0c0c0),
+      color: new THREE.Color(0x1c1c1c),
       map: noiseTexture.clone(),
       normalMap: normalMap.clone(),
       metalness: 0.9,
-      roughness: 0.05,
-      envMapIntensity: 1.0,
-      clearcoat: 0.3,
-      clearcoatRoughness: 0.1,
+      roughness: 0.3,
+      envMapIntensity: 0.5,
+      clearcoat: 0.1,
+      clearcoatRoughness: 0.2,
+      side: THREE.FrontSide,
+      onBeforeCompile: (shader) => {
+        shader.uniforms.envMapIntensity = { value: 0.5 };
+        shader.uniforms.clearcoat = { value: 0.1 };
+        shader.uniforms.clearcoatRoughness = { value: 0.2 };
+        shader.uniforms.normalScale = { value: new THREE.Vector2(0.5, 0.5) };
+      }
     },
   };
 
@@ -314,8 +339,6 @@ function changeColor(colorName) {
   if (backpackModel) {
     backpackModel.traverse(function (node) {
       if (node.isMesh) {
-        console.log(`Changing color of mesh: "${node.name}"`);
-
         // Change color only for the main mesh and straps:
         if (node.name === "Mesh" || node.name === "Mesh_2") {
           node.material.needsUpdate = true;
@@ -365,6 +388,10 @@ function changeFabric(materialName) {
           node.material.needsUpdate = true;
           node.material.color.set(window.currentColor);
         }
+
+        // Update the current fabric globally
+        window.currentFabric = material;
+        window.currentFabricName = materialName;
 
         // active class added to the clicked button:
         fabricButtons.forEach((button) => {
@@ -436,7 +463,10 @@ function applyFabricToModel(material) {
 }
 
 async function saveChanges() {
-  await backpackModel;
+  // As long as the model-viewer lazy-loads textures and only applies them when there is user interaction - 
+  // a small rotation is applied to the model to trigger the loading of textures:
+  const currentOrbit = modelViewer.getCameraOrbit();
+  modelViewer.cameraOrbit = `${currentOrbit.theta + 0.001}rad`
 
   const modelData = {
     color: window.currentColorName,
@@ -444,30 +474,82 @@ async function saveChanges() {
     metal: window.currentMetalName,
   };
 
-  const material = modelViewer.model.materials[0]; 
+  const symbols = Object.getOwnPropertySymbols(modelViewer);
+  const sceneSymbol = symbols.find((symbol) => symbol.description === "scene");
 
-  // Changing the color for AR model:
-  if (modelData.color === "brown") {
-    material.pbrMetallicRoughness.setBaseColorFactor(new THREE.Color(0xcb8240));
-  } else if (modelData.color === "blue") {
-    material.pbrMetallicRoughness.setBaseColorFactor(new THREE.Color(0x4169e1));
-  } else if (modelData.color === "black") {
-    material.pbrMetallicRoughness.setBaseColorFactor(new THREE.Color(0x574952));
+  if (!sceneSymbol) {
+    console.error("Scene symbol not found");
+    return;
   }
 
-  const textureLoader = new THREE.TextureLoader();
-  textureLoader.load(
-    materialConfigs[modelData.fabric].texturePath,
-    (newTexture) => {
-      const existingTexture = material.pbrMetallicRoughness.baseColorTexture;
+  const scene = modelViewer[sceneSymbol];
 
-      if (existingTexture && existingTexture.texture) {
-        
+  scene.traverse((child) => {
+    if (child.isMesh && child.material) {
+      if (child.name === "Mesh" || child.name === "Mesh_2") {
+        // Apply the selected by user colors and fabric material to the main mesh and straps:
+        if (modelData.color === "brown") {
+          child.material.color.setHex(0xcb8240);
+        } else if (modelData.color === "blue") {
+          child.material.color.setHex(0x6f8faf);
+        } else if (modelData.color === "black") {
+          child.material.color.setHex(0x574952);
+        }
+
+        const textureLoader = new THREE.TextureLoader();
+        textureLoader.load(
+          materialConfigs[modelData.fabric].texturePath,
+          (texture) => {
+            texture.flipY = false;
+            child.material.map = texture;
+            child.material.needsUpdate = true;
+            // Set the normal map if it exists
+            if (materialConfigs[modelData.fabric].normalPath) {
+              textureLoader.load(
+                materialConfigs[modelData.fabric].normalPath,
+                (normalMap) => {
+                  normalMap.flipY = false;
+                  child.material.normalMap = normalMap;
+                  child.material.needsUpdate = true;
+                },
+                undefined,
+                (error) => {
+                  console.error("Error loading normal map:", error);
+                }
+              );
+            }
+            // Set the roughness map if it exists
+            if (materialConfigs[modelData.fabric].roughnessPath) {
+              textureLoader.load(
+                materialConfigs[modelData.fabric].roughnessPath,
+                (roughnessMap) => {
+                  roughnessMap.flipY = false;
+                  child.material.roughnessMap = roughnessMap;
+                  child.material.needsUpdate = true;
+                },
+                undefined,
+                (error) => {
+                  console.error("Error loading roughness map:", error);
+                }
+              );
+            }
+          }
+        );
+      }
+      if (child.name === "Mesh_1") {
+        // Apply the selected by user metal material to the buckles:
+        if (modelData.metal === "silver") {
+          child.material = metals.silver;
+        } else if (modelData.metal === "gold") {
+          child.material = metals.gold;
+        } else if (modelData.metal === "black") {
+          child.material = metals.black;
+        }
+        child.material.needsUpdate = true;
       }
     }
-  );
+  });
 }
-
 function animate() {
   controls.update();
   renderer.render(scene, camera);
@@ -487,28 +569,18 @@ function initScene() {
   createFabrics();
   createMetals();
   loadModel();
+  saveChanges();
 }
 
-saveChanges();
+if (document.getElementById("backpackCanvas")) {
+  saveChanges();
+}
 
 renderer.setAnimationLoop(animate);
 
 window.addEventListener("load", initScene);
 window.addEventListener("resize", handleResize);
 window.addEventListener("orientationchange", handleResize);
-
-// For more comfort DevTools device simulation:
-// let lastWidth = window.innerWidth;
-// let lastHeight = window.innerHeight;
-
-// function checkForSizeChange() {
-//     if (window.innerWidth !== lastWidth || window.innerHeight !== lastHeight) {
-//         lastWidth = window.innerWidth;
-//         lastHeight = window.innerHeight;
-//         handleResize();
-//     }
-// }
-// setInterval(checkForSizeChange, 100);
 
 // Export functions for external use
 window.changeColor = changeColor;

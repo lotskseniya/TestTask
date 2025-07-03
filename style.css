@@ -39,7 +39,7 @@ body {
 #controls {
   display: flex;
   align-items: center;
-  margin-top: 30dvh;
+  margin-top: 5dvh;
   display: flex;
   flex-direction: row;
   gap: 6.5rem;
@@ -58,16 +58,17 @@ body {
 #backpackCanvas {
   display: flex;
   margin-top: 8dvh;
-  height: 32dvh;
+  height: 62dvh;
   width: auto;
 }
 
 #backpackModel {
      justify-content: center;
   align-items: center;
-  height: 50dvh;
+  height: 90dvh;
   width: auto;
 }
+
 
 .configurator-menu-headers {
   color: rgba(26, 26, 26, 1);
@@ -195,6 +196,24 @@ button:hover {
   box-shadow: none !important;
 }
 
+#returnBtn {
+  position: absolute;
+  top: 2rem;
+  left: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  box-shadow: none !important;
+
+}
+
+.return-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  transform: translateY(2px);
+}
+
 .qr-code-image {
   width: 11.875rem;
   height: 11.875rem;
@@ -208,7 +227,7 @@ button:hover {
     flex-direction: column;
     align-items: center;
     margin-top: 40dvh;
-    gap: 1rem;
+    gap: 1.5rem;
   }
   #backpackCanvas {
     height: 20dvh;
@@ -224,13 +243,13 @@ button:hover {
   }
 
   .round-button {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
   }
 
   .text-button {
-    height: 1.5rem;
-    width: 4rem;
+    height: 2rem;
+    width: 4.5rem;
     font-size: 10px;
   }
 
@@ -282,7 +301,7 @@ button:hover {
     flex-direction: column;
     align-items: center;
     margin-top: 32dvh;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 
   #backpackCanvas {
@@ -333,11 +352,11 @@ button:hover {
     flex-direction: column;
     align-items: center;
     margin-top: 35dvh;
-    gap: 4rem;
+    gap: 1rem;
   }
 
   #backpackCanvas {
-    height: 32dvh;
+    height: 30dvh;
     margin-top: 0dvh;
   }
 
