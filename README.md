@@ -1,7 +1,8 @@
 Backpack Configurator with web AR viewing function
 
 
-🚀 Live Demo:  https://testtask-lac.vercel.app/
+🚀 Live Demo:  task-ivory-three.vercel.app    (Glitch AR model viewer)
+(<model-viewer> is under construction)
 
 🛠️ Tech Stack:
 Created using vanilla JS and THREE.js
