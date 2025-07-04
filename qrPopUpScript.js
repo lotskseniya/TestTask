@@ -27,6 +27,15 @@ function handleMenuClick(item) {
   hidePopup();
 }
 
+window.addEventListener('load', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('open') === 'model') {
+        setTimeout(() => {
+           showARModule();
+        }, 500);
+    }
+});
+
 window.addEventListener("click", (event) => {
     if (event.target === popupOverlay) {
         showARModule();
